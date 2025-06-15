@@ -1,0 +1,56 @@
+This is a file with information that I will find helpful to reference in order to make--making snippets easier
+
+ls.s(context, node, opts) 
+context = {
+    trig: what triggers the snippet 
+    name: string, can be used by e.g. nvim-compe to identify the snippet 
+    desc (or dscr): string, description of the snippet 
+    wordTrig: snippet is only expanded if the word ([%w_]+) before the cursor matches the trigger entirely. True by default
+    regTrig: boolean, whether the trigger should be interpreted as a Lua pattern. False by default 
+    docstring: string, textual representation of the snippet, specified like "desc"
+    hidden: boolean, hint for completion-engines. If set, the snippet should not show up when querying snippets 
+    snippetType: string, should be either snippet or autosnippet
+    filetype: string, the filetype of the snippet
+}
+
+nodes: A single node or a list of nodes. The nodes that make up the snippet.
+
+
+The following are ext_opts that can be passed as an argument to opts, there are other options as well like events and the like but that seems rather advanced with keys being [-1] [2] for reasons unknown to me right now 
+
+Opts = {
+    these ext_opts are applied when the node is active (e.g. it has been jumped into, and not out yet
+	active = {}, 
+
+    these ext_opts are applied when the node is not active, but the snippet still is.
+	passive = {},
+
+    visited or unvisited are applied when a node was/was not jumped into.
+	visited = {},
+	unvisited = {},
+
+    these are applied when both the node and the snippet are inactive.
+    snippet_passive = {},
+}
+
+To apply globally you can do something like the following 
+
+local types = require("luasnip.util.types")
+ls.setup({
+	ext_opts = {
+		[types.insertNode] = {
+			active = {...},
+			visited = {...},
+			passive = {...},
+			snippet_passive = {...}
+		},
+		[types.choiceNode] = {
+			active = {...},
+			unvisited = {...}
+		},
+		[types.snippet] = {
+			passive = {...}
+		}
+	}
+})
+
