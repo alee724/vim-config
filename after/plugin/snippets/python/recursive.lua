@@ -103,10 +103,10 @@ local snippets = {
     { -- simple definition snippet
         ";def",
         fmta([[
-        # START
+        # STARTF
         def <>(<>):
             <><>
-        # END
+        # ENDF
         ]], { ls.i(1, "fname"), ls.i(2), ls.d(3, deff, { 2 }), ls.i(4) })
     },
 }

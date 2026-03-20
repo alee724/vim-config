@@ -13,10 +13,10 @@ keymap('t', '<esc>', '<C-\\><C-N>', opts) -- <esc> but in terminal
 keymap("n", "œ", "ZQ", opts) -- closes current buff
 keymap("n", "ç˙", ":checkhealth<cr>", opts) -- checkhealth shortcut
 
-keymap("n", "fC", "zM", opts) -- closes all folds
-keymap("n", "fO", "zR", opts) -- opens all folds
-keymap("n", "fc", "zc", opts) -- closes all folds
-keymap("n", "fo", "zo", opts) -- opens all folds
+keymap("n", "FP", "zM", opts) -- closes all folds
+keymap("n", "FO", "zR", opts) -- opens all folds
+keymap("n", "fp", "zc", opts) -- closes current fold
+keymap("n", "fo", "zo", opts) -- opens current fold
 
 keymap("n", "t", "<CMD>lua require('FTerm').toggle()<CR>", opts) -- opens terminal
 keymap('n', '<leader>t', vim.cmd.UndotreeToggle) -- opens undotree
@@ -62,7 +62,6 @@ keymap("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 -- formatting
 keymap("n", "<leader>f", function() -- formatting
     vim.lsp.buf.format()
-    vim.cmd.normal("zC")
 end)
 
 -- telescope seems to be broken and can't create keymaps so I put it here

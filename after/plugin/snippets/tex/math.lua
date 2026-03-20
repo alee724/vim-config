@@ -18,6 +18,11 @@ local nonregex = {
 
 local nonregex_math = {
     -- snippets that I want to execute immediately upon typing in the math env
+    { -- vectors 
+        "vv", fmta([[ 
+        \vec{<>}<>
+        ]], {ls.i(1), ls.i(2)})
+    },
     { -- fractions
         "ff", fmta([[\frac{<>}{<>}<>]],
         { ls.i(1), ls.i(2), ls.i(0) })

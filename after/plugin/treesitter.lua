@@ -6,6 +6,11 @@ require("lazy").setup({{
 
       configs.setup({
           ensure_installed = { 
+              "gdscript", 
+              "godot_resource", 
+              "gdshader", 
+              "bash", 
+              "zsh", 
               "c", 
               "lua", 
               "vim", 
@@ -17,6 +22,7 @@ require("lazy").setup({{
               "latex", 
               "sql" 
           },
+          autoinstall = true, 
           sync_install = false,
           highlight = { 
               enable = true, 

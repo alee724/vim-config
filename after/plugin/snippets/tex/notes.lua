@@ -32,6 +32,17 @@ end
 
 
 local nonregex = {
+    { -- horizontal fill 
+        ";hf ", ls.t "\\hfill"
+    }, 
+    { -- creating a column
+        ";col ",
+        fmta([[
+        \begin{minipage}{0.45\textwidth}
+            <>
+        \end{minipage}<>
+        ]], { ls.i(1), ls.i(2) })
+    },
     { -- creating a new paragraph
         ";;", ls.t "\\\\"
     },
@@ -70,7 +81,7 @@ local nonregex = {
     { -- make a box
         ";box ",
         fmta([[
-        fbox{\\parbox{\\boxlength}{
+        \fbox{\parbox{\boxlength}{
             <>
         }} <>
         ]], { ls.i(1), ls.i(0) })
@@ -142,7 +153,7 @@ local nonregex = {
         fmta([[
         \includegraphics[<>]{<>}\medbreak<>
         ]],
-            { ls.c(1, { ls.t "", ls.t "scale=1", ls.t "width=0.45\\textwidth, keepaspectratio" }), ls.i(2, "image path"),
+            { ls.c(1, { ls.t "", ls.t "scale=1", ls.t "width=0.45\\textwidth, keepaspectratio", ls.t "width=\\textwidth, keepaspectratio"}), ls.i(2, "image path"),
                 ls.i(0) })
     },
     { -- for making a solving environment
@@ -158,7 +169,7 @@ local nonregex = {
         { ls.t "&= " }
     },
     { -- for vertex, edge graphs
-        ";g ",
+        ";graph ",
         fmta([[
         \begin{tikzpicture}
           \graph [spring layout] {

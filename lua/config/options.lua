@@ -38,12 +38,11 @@ local options = {
     termguicolors = true,
     linebreak = true,
 
-    textwidth = 100,
+    -- textwidth = 100,
 
     -- for folding lines
     foldmethod = "marker",
-    foldmarker = "START,END",
-    foldlevel = 1
+    foldmarker = "STARTF,ENDF",
 }
 
 
@@ -62,6 +61,7 @@ function _G.fold_text()
 end
 
 vim.opt.foldtext = "v:lua.fold_text()"
+vim.o.foldlevel = 1
 
 
 for option, value in pairs(options) do

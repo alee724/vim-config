@@ -67,8 +67,11 @@ local plugins = {
             "nvim-lua/plenary.nvim"
         },
     },
-    "mistweaverco/kulala.nvim",
-    --[[ "azratul/expose-localhost.nvim", -- for exposing site to internet with cloudflare later ]]
+    "mistweaverco/kulala.nvim", -- for html compilation
+
+    "tidalcycles/vim-tidal",
+    'habamax/vim-godot',
+    'neoclide/coc.nvim',
 }
 
 local opts = {}

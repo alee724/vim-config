@@ -1,8 +1,8 @@
 local ls = require('luasnip')
-local fmt = require('luasnip.extras.fmt').fmt
 local fmta = require('luasnip.extras.fmt').fmta
 local extras = require("luasnip.extras")
 local rep = extras.rep
+
 
 local snippets = {
     { -- for brackets
@@ -29,29 +29,22 @@ local snippets = {
         ";m",
         ls.t "-"
     },
-    { -- for making class
-        ";class",
-        fmta([[
-        # STARTF
-        class <>(<>):
+    {
+        ";f", fmta([[
+        for (<>; <>; <>) {
             <>
-        # ENDF
-        ]], { ls.i(1, "ClassName"), ls.i(2), ls.i(3) })
-    },
-    { -- for making comments ig
-        ";c ",
-        fmta([[
-        # ========== <> ==========<>
-        ]], { ls.i(1), ls.i(0) })
-    },
-    -- for making the folding line region
-    {
-        ";S", ls.t "# STARTF"
+        }<>
+        ]], { ls.i(1, "init"), ls.i(2, "guard"), ls.i(3, "after"), ls.i(4), ls.i(5) })
     },
     {
-        ";E", ls.t "# ENDF"
-    },
+        ";w", fmta([[
+        while (<>) {
+            <>
+        }<>
+        ]], { ls.i(1, "guard"), ls.i(2), ls.i(3) })
+    }
 }
+
 
 local res = {}
 for _, s in ipairs(snippets) do

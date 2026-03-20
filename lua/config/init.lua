@@ -2,4 +2,4 @@ require "config.lazy"
 require "config.options"
 require "config.keymaps"
 require "config.snip"
-
+-- require "config.config"

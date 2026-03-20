@@ -70,16 +70,16 @@ require("nvim-tree").setup {
     },
     filters = {
         dotfiles = true,
-        custom = {
-            enable = true,
-            "Applications",
-            "Desktop",
-            "go",
-            "Music",
-            "Movies",
-            "Pictures",
-            "Public",
-        },
+        -- custom = {
+        --     enable = true,
+        --     "Applications",
+        --     "Desktop",
+        --     "go",
+        --     "Music",
+        --     "Movies",
+        --     "Pictures",
+        --     "Public",
+        -- },
         -- List of directories or files to exclude from filtering: always show them.
         exclude = {
             ".config",
